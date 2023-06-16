@@ -12,10 +12,11 @@ public class ScoreService {
     @Autowired
     private ScoreRepository repository;
 
-    public List<Score> getAll(){
+    public List<Score> getAll() {
         return repository.findAll();
     }
-    public Score save(Score score){
+
+    public Score save(Score score) {
         return repository.save(score);
     }
 }

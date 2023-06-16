@@ -13,28 +13,31 @@ public class MessageService {
     @Autowired
     private MessageRepository repository;
 
-    public List<Message> getAll(){
+    public List<Message> getAll() {
         return repository.findAll();
     }
-    public Message save(Message message){
+
+    public Message save(Message message) {
         return repository.save(message);
     }
-    public Optional<Message> findById(long id){
-    return repository.findById(id);
+
+    public Optional<Message> findById(long id) {
+        return repository.findById(id);
     }
-    public Message updateMessage(Message message){
-        Optional<Message>messageUpdate = findById(message.getIdMessage());
-        if(messageUpdate.isPresent()){
+
+    public Message updateMessage(Message message) {
+        Optional<Message> messageUpdate = findById(message.getIdMessage());
+        if (messageUpdate.isPresent()) {
             messageUpdate.get().setMessageText(message.getMessageText());
             messageUpdate.get().setCar(message.getCar());
             messageUpdate.get().setClient(message.getClient());
             return repository.save(messageUpdate.get());
-        }
-        else{
+        } else {
             return message;
         }
     }
-    public void deleteMessage(long id){
+
+    public void deleteMessage(long id) {
         repository.deleteById(id);
     }
 }

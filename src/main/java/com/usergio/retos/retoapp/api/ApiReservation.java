@@ -20,41 +20,46 @@ public class ApiReservation {
     private ReservationService service;
 
     @GetMapping("/all")
-    public List<Reservation> getAll(){
+    public List<Reservation> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Reservation> getReservation(@PathVariable long id){
+    public Optional<Reservation> getReservation(@PathVariable long id) {
         return service.getFindById(id);
     }
+
     @PostMapping("/save")
-    public ResponseEntity save(@RequestBody Reservation reservation){
+    public ResponseEntity save(@RequestBody Reservation reservation) {
         service.save(reservation);
         return ResponseEntity.status(201).build();
     }
+
     @PutMapping("/update")
-    public ResponseEntity update(@RequestBody Reservation reservation){
+    public ResponseEntity update(@RequestBody Reservation reservation) {
         service.updateReservation(reservation);
         return ResponseEntity.status(201).build();
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable long id){
+    public ResponseEntity delete(@PathVariable long id) {
         service.deleteReservation(id);
         return ResponseEntity.status(204).build();
     }
 
     @GetMapping("/report-dates/{dateOne}/{dateTwo}")
     public List<Reservation> getReservationsReportDates(@PathVariable String dateOne,
-                                                        @PathVariable String dateTwo){
-        return service.getReservationPeriod(dateOne,dateTwo);
+                                                        @PathVariable String dateTwo) {
+        return service.getReservationPeriod(dateOne, dateTwo);
     }
+
     @GetMapping("/report-status")
-    public StatusAmount getReservationStatusReport(){
+    public StatusAmount getReservationStatusReport() {
         return service.getReservationByStatusReport();
     }
+
     @GetMapping("/report-clients")
-    public List<CountClient> getReservationReportClient(){
+    public List<CountClient> getReservationReportClient() {
         return service.getTopClients();
     }
 }

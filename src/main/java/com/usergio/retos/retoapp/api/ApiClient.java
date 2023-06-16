@@ -15,27 +15,31 @@ import java.util.Optional;
 public class ApiClient {
     @Autowired
     private ClientService service;
+
     @GetMapping("/all")
-    public List<Client> getAll(){
+    public List<Client> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Client> getClient(@PathVariable long id){
+    public Optional<Client> getClient(@PathVariable long id) {
         return service.getFindById(id);
     }
+
     @PostMapping("/save")
-    public ResponseEntity save(@RequestBody Client client){
+    public ResponseEntity save(@RequestBody Client client) {
         service.save(client);
         return ResponseEntity.status(201).build();
     }
+
     @PutMapping("/update")
-    public ResponseEntity update(@RequestBody Client client){
+    public ResponseEntity update(@RequestBody Client client) {
         service.updateClient(client);
         return ResponseEntity.status(201).build();
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable long id){
+    public ResponseEntity delete(@PathVariable long id) {
         service.deleteClient(id);
         return ResponseEntity.status(204).build();
     }

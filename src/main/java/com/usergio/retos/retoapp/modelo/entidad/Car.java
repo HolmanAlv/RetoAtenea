@@ -15,7 +15,7 @@ import java.util.List;
 @ToString
 @Data
 @Entity
-@Table(name="car")
+@Table(name = "car")
 public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +25,15 @@ public class Car implements Serializable {
     private Integer year;
     private String description;
     @ManyToOne
-    @JoinColumn(name="gamaId")
+    @JoinColumn(name = "gamaId")
     @JsonIgnoreProperties("cars")
     private Gama gama;
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "car")
-    @JsonIgnoreProperties({"car","client"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
+    @JsonIgnoreProperties({"car", "client"})
     private List<Message> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "car")
-    @JsonIgnoreProperties({"car","messages"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
+    @JsonIgnoreProperties({"car", "messages"})
     private List<Reservation> reservations;
 }
 

@@ -27,8 +27,7 @@ public class ApiGama {
         Optional<Gama> gama = service.getFindById(id);
         if (gama.isPresent()) {
             return ResponseEntity.ok(gama.get());
-        }
-        else{
+        } else {
             /*
             Mensaje mensaje = new Mensaje(404,
                     "No se encontro Registro id="+id);
@@ -36,26 +35,29 @@ public class ApiGama {
 
              */
             Mensaje mensaje = Mensaje.builder()
-                               .httpCode(404)
-                               .mensaje("No se encontro Registro id"+id)
-                               .build();
+                    .httpCode(404)
+                    .mensaje("No se encontro Registro id" + id)
+                    .build();
             return ResponseEntity.status(404).body(mensaje);
 
         }
 
     }
+
     @PostMapping("/save")
-    public ResponseEntity saveGama(@RequestBody Gama gama){
+    public ResponseEntity saveGama(@RequestBody Gama gama) {
         service.save(gama);
         return ResponseEntity.status(201).build();
     }
+
     @PutMapping("/update")
-    public ResponseEntity updateGama(@RequestBody Gama gama){
+    public ResponseEntity updateGama(@RequestBody Gama gama) {
         service.updateGama(gama);
         return ResponseEntity.status(201).build();
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteGama(@PathVariable long id){
+    public ResponseEntity deleteGama(@PathVariable long id) {
         service.deleteGama(id);
         return ResponseEntity.status(204).build();
     }

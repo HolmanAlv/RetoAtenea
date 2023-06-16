@@ -20,18 +20,21 @@ public class ReservationService {
     @Autowired
     private ReservationRepository repository;
 
-    public List<Reservation> getAll(){
+    public List<Reservation> getAll() {
         return repository.findAll();
     }
-    public Reservation save(Reservation reservation){
+
+    public Reservation save(Reservation reservation) {
         return repository.save(reservation);
     }
-    public Optional<Reservation> getFindById(long id){
+
+    public Optional<Reservation> getFindById(long id) {
         return repository.findById(id);
     }
-    public Reservation updateReservation(Reservation reservation){
+
+    public Reservation updateReservation(Reservation reservation) {
         Optional<Reservation> reservationUpdate = getFindById(reservation.getIdReservation());
-        if(reservationUpdate.isPresent()){
+        if (reservationUpdate.isPresent()) {
             reservationUpdate.get().setStartDate(reservation.getStartDate());
             reservationUpdate.get().setDevolutionDate(reservation.getDevolutionDate());
             reservationUpdate.get().setStatus(reservation.getStatus());
@@ -39,15 +42,16 @@ public class ReservationService {
             reservationUpdate.get().setClient(reservation.getClient());
             return repository.save(reservationUpdate.get());
 
-        }
-        else{
+        } else {
             return reservation;
         }
     }
-    public void deleteReservation(long id){
+
+    public void deleteReservation(long id) {
         repository.deleteById(id);
     }
-    public List<Reservation> getReservationPeriod(String dateA,String dateB){
+
+    public List<Reservation> getReservationPeriod(String dateA, String dateB) {
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
         Date a = new Date();
         Date b = new Date();
@@ -57,28 +61,28 @@ public class ReservationService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if(a.before(b)){
-            return repository.findAllByStartDateAfterAndStartDateBefore(a,b);
-        }
-        else{
+        if (a.before(b)) {
+            return repository.findAllByStartDateAfterAndStartDateBefore(a, b);
+        } else {
             return new ArrayList<>();
         }
     }
-    public StatusAmount getReservationByStatusReport(){
+
+    public StatusAmount getReservationByStatusReport() {
         List<Reservation> completed = repository.findAllByStatus("completed");
         List<Reservation> cancelled = repository.findAllByStatus("cancelled");
         //return new StatusAmount(completed.size(),cancelled.size());
-        return  StatusAmount.builder()
+        return StatusAmount.builder()
                 .completed(completed.size())
                 .cancelled(cancelled.size())
                 .build();
     }
 
-    public List<CountClient> getTopClients(){
+    public List<CountClient> getTopClients() {
         List<CountClient> res = new ArrayList<>();
         List<Object[]> report = repository.countTotalReservationByClient();
-        for(int i=0;i<report.size();i++){
-            res.add(new CountClient((Long)report.get(i)[1],(Client)report.get(i)[0]));
+        for (int i = 0; i < report.size(); i++) {
+            res.add(new CountClient((Long) report.get(i)[1], (Client) report.get(i)[0]));
         }
         return res;
     }

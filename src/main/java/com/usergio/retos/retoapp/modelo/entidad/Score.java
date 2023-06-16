@@ -8,21 +8,22 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @ToString
-    @Data
-    @Entity
-    @Table(name="score")
-    public class Score implements Serializable {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long idScore;
-        private String messageText;
-        private int stars;
 
-        @OneToOne
-        @JsonIgnoreProperties("score")
-        private Reservation reservation;
-    }
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Data
+@Entity
+@Table(name = "score")
+public class Score implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idScore;
+    private String messageText;
+    private int stars;
+
+    @OneToOne
+    @JsonIgnoreProperties("score")
+    private Reservation reservation;
+}
 

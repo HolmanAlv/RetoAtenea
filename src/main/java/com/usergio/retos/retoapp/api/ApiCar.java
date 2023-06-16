@@ -12,33 +12,38 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-    @RequestMapping("api/Car")
-    @CrossOrigin("*")
-    public class ApiCar {
-        @Autowired
-        private CarService service;
+@RequestMapping("api/Car")
+@CrossOrigin("*")
+public class ApiCar {
+    @Autowired
+    private CarService service;
 
-        @GetMapping("/all")
-        public List<Car> getAll(){return service.getAll();}
+    @GetMapping("/all")
+    public List<Car> getAll() {
+        return service.getAll();
+    }
 
     @GetMapping("/{id}")
     public Optional<Car> getCar(@PathVariable long id) {
         return service.getFindById(id);
     }
-        @PostMapping("/save")
-        public ResponseEntity save(@RequestBody Car car){
-            service.save(car);
-            return ResponseEntity.status(201).build();
-        }
-        @PutMapping("/update")
-        public ResponseEntity update(@RequestBody Car car){
-            service.updateCar(car);
-            return ResponseEntity.status(201).build();
-        }
-        @DeleteMapping("/{id}")
-        public ResponseEntity delete(@PathVariable long id){
-            service.deleteCar(id);
-            return ResponseEntity.status(204).build();
-        }
+
+    @PostMapping("/save")
+    public ResponseEntity save(@RequestBody Car car) {
+        service.save(car);
+        return ResponseEntity.status(201).build();
     }
+
+    @PutMapping("/update")
+    public ResponseEntity update(@RequestBody Car car) {
+        service.updateCar(car);
+        return ResponseEntity.status(201).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable long id) {
+        service.deleteCar(id);
+        return ResponseEntity.status(204).build();
+    }
+}
 

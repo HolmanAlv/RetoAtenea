@@ -12,30 +12,34 @@ import java.util.Optional;
 public class ClientService {
     @Autowired
     private ClientRepository repository;
-    public List<Client> getAll(){
+
+    public List<Client> getAll() {
         return repository.findAll();
 
     }
-    public Client save(Client client){
+
+    public Client save(Client client) {
         return repository.save(client);
     }
-    public Optional<Client> getFindById(long id){
+
+    public Optional<Client> getFindById(long id) {
         return repository.findById(id);
     }
-    public Client updateClient(Client client){
+
+    public Client updateClient(Client client) {
         Optional<Client> clientUpdate = getFindById(client.getIdClient());
-        if(clientUpdate.isPresent()){
+        if (clientUpdate.isPresent()) {
             clientUpdate.get().setEmail(client.getEmail());
             clientUpdate.get().setPassword(client.getPassword());
             clientUpdate.get().setName(client.getName());
             clientUpdate.get().setAge(client.getAge());
             return repository.save(clientUpdate.get());
-        }
-        else{
+        } else {
             return client;
         }
     }
-    public void deleteClient(long id){
+
+    public void deleteClient(long id) {
         repository.deleteById(id);
     }
 

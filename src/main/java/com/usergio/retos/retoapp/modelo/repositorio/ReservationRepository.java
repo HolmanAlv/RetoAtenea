@@ -7,14 +7,15 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Date;
 import java.util.List;
 
-public interface ReservationRepository extends JpaRepository<Reservation,Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     //select clientId,count(clientId) as total from reservation group by clientid orde by total desc,
     @Query("select c.client,count(c.client) from Reservation as c group by c.client order by count(c.client) DESC")
     public List<Object[]> countTotalReservationByClient();
+
     public List<Reservation> findAllByStartDateAfterAndStartDateBefore(Date dateOne,
                                                                        Date dateTwo);
-    public List<Reservation> findAllByStatus(String status);
 
+    public List<Reservation> findAllByStatus(String status);
 
 
 }
