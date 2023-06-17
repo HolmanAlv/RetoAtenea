@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+</head>
+<body>
+    <h1>Formulario de Carro</h1>
+
+    <!-- Obtener Carro por ID -->
+    <h2>Obtener Carro por ID</h2>
+    <label for="getCarroId">ID del Carro:</label>
+    <input type="text" id="getCarroId">
+    <button onclick="obtenerCarro()">Obtener Carro</button>
+  
+    <!-- Ingresar Carro -->
+    <h2>Ingresar Carro</h2>
+    <label for="carroId">ID del Carro:</label>
+    <input type="text" id="carroId">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre">
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca">
+    <label for="anio">Año:</label>
+    <input type="text" id="anio">
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion"></textarea>
+    <button onclick="ingresarCarro()">Ingresar Carro</button>
+  
+    <!-- Actualizar Carro -->
+    <h2>Actualizar Carro por ID</h2>
+    <label for="updateCarroId">ID del Carro:</label>
+    <input type="text" id="updateCarroId">
+    <label for="updateNombre">Nuevo Nombre:</label>
+    <input type="text" id="updateNombre">
+    <label for="updateMarca">Nueva Marca:</label>
+    <input type="text" id="updateMarca">
+    <label for="updateAnio">Nuevo Año:</label>
+    <input type="text" id="updateAnio">
+    <label for="updateDescripcion">Nueva Descripción:</label>
+    <textarea id="updateDescripcion"></textarea>
+    <button onclick="actualizarCarro()">Actualizar Carro</button>
+  
+    <!-- Eliminar Carro -->
+    <h2>Eliminar Carro por ID</h2>
+    <label for="deleteCarroId">ID del Carro:</label>
+    <input type="text" id="deleteCarroId">
+    <button onclick="eliminarCarro()">Eliminar Carro</button>
+
+    <!-- Botón para regresar al index.html -->
+  <button onclick="window.location.href = '../index.html'">Regresar</button>
+  
+</body>
+</html>

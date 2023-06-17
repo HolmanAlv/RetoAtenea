@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+</head>
+<body>
+    <h1>Formulario de Cliente</h1>
+
+    <!-- Obtener Cliente por ID -->
+    <h2>Obtener Cliente por ID</h2>
+    <label for="getClienteId">ID del Cliente:</label>
+    <input type="text" id="getClienteId">
+    <button onclick="obtenerCliente()">Obtener Cliente</button>
+  
+    <!-- Ingresar Cliente -->
+    <h2>Ingresar Cliente</h2>
+    <label for="clienteId">ID del Cliente:</label>
+    <input type="text" id="clienteId">
+    <label for="correo">Correo:</label>
+    <input type="text" id="correo">
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" id="contrasena">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre">
+    <label for="edad">Edad:</label>
+    <input type="text" id="edad">
+    <button onclick="ingresarCliente()">Ingresar Cliente</button>
+  
+    <!-- Actualizar Cliente -->
+    <h2>Actualizar Cliente por ID</h2>
+    <label for="updateClienteId">ID del Cliente:</label>
+    <input type="text" id="updateClienteId">
+    <label for="updateCorreo">Nuevo Correo:</label>
+    <input type="text" id="updateCorreo">
+    <label for="updateContrasena">Nueva Contraseña:</label>
+    <input type="password" id="updateContrasena">
+    <label for="updateNombre">Nuevo Nombre:</label>
+    <input type="text" id="updateNombre">
+    <label for="updateEdad">Nueva Edad:</label>
+    <input type="text" id="updateEdad">
+    <button onclick="actualizarCliente()">Actualizar Cliente</button>
+  
+    <!-- Eliminar Cliente -->
+    <h2>Eliminar Cliente por ID</h2>
+    <label for="deleteClienteId">ID del Cliente:</label>
+    <input type="text" id="deleteClienteId">
+    <button onclick="eliminarCliente()">Eliminar Cliente</button>
+
+    <!-- Botón para regresar al index.html -->
+  <button onclick="window.location.href = '../index.html'">Regresar</button>
+</body>
+</html>
